@@ -1,0 +1,47 @@
+<div class="dataStyle">
+  <mat-form-field>
+    <mat-label>{{currentDate}}</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="choosenDate" (ngModelChange)="changeDate()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<br> 
+
+<div class="form-group">
+  <label class="float-left">Please enter your sample ID:</label>
+  <div class="form-group">
+    <select class="form-control" [ngClass]="sampleID === 'undefined' ? 'red' : 'green'" [(ngModel)]="sampleID" placeholder="e.g. 1912-10195" (ngModelChange)="selectSampleId()">
+        <option value="undefined" selected>Choose an option</option>
+        <option *ngFor="let item of mySampleInfoList" value={{item.sampleId}}>{{ item.sampleId }}</option>
+    </select>
+  </div>
+</div>
+<label class="float-left">Do you know the initial weight of the sample?</label>
+    <div class="form-group">
+      <select class="form-control"  name="isWeightKnown" [(ngModel)]="isWeightKnown" (ngModelChange)="checkIfWeightIsKnows()" >
+        <optgroup label="Choose an option">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </optgroup>
+      </select>
+    </div>   
+    
+    <div class="form-group">
+      <label class="float-left">Please enter the initial weight of this sample:</label>
+        <input class="form-control" type="number" [(ngModel)]="initialWeight" name="initialWeight" id="valueForInput" disabled="true" placeholder="e.g. 23 mL">
+        <div class="text-center alert-danger" [style.display]='initialWeightIsNotValid'>Invalid Weight.</div>
+    </div>
+    <div class="form-group">
+      <label class="float-left">Comments:</label>
+         <textarea class="form-control" type="text" [(ngModel)]="comments" name="comments" required="" placeholder="Maximum of 500 letters"></textarea>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success btn-block" type="button" (click)="sendSampleInformation()">Submit</button>
+    </div>
+
+    <!-- DINAMIC MESSAGES -->
+    <div class="alert alert-success text-center" [style.display]='sampleWasAdded' >Sample was added!</div>
+    <div class="alert alert-danger text-center" [style.display]='sampleWasNotAdded'>Missing one or more fields.</div>
+    <div class="alert alert-danger text-center" [style.display]='sampleWasAlreadyProcessed'>Sample was already processed.</div>
+    

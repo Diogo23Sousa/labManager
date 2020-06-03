@@ -1,0 +1,45 @@
+<div class="dataStyle">
+  <mat-form-field>
+    <mat-label>{{currentDate}}</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="choosenDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<br>     
+<div class="form-group">
+  <label class="float-left">Please enter the sample ID you want to edit:</label>
+  <div class="form-group">
+    <select class="form-control" [(ngModel)]="sampleIdtoUpdate" placeholder="e.g. 1912-10195" (ngModelChange)="selectSampleToEdit()">
+      <optgroup  label="Choose an option">
+        <option *ngFor="let item of myProcessedSamples" value={{item.sampleId}}>{{ item.sampleId }}</option>
+      </optgroup>
+    </select>
+  </div>
+</div>
+ 
+  <div class="form-group">
+    <label class="float-left">Please enter the initial weight of this sample:</label>
+      <input class="form-control" type="number" [(ngModel)]="initialWeight" name="initialWeight" id="weightSection" disabled="true" placeholder="E.g. 50 g">
+      <div class="text-center alert-danger" [style.display]='initialWeightIsNotValid'>Invalid Weight.</div>
+  </div>
+
+  <div class="form-group">
+    <label class="float-left">Please enter the EDB buffer volume of this sample:</label>
+      <input class="form-control" type="number" [(ngModel)]="bufferVolume" name="bufferVolume" id="bufferSection" disabled="true" placeholder="E.g. 50 mL ">
+      <div class="text-center alert-danger" [style.display]='bufferVolumeIsNotValid'>Invalid Volume.</div>
+  </div>
+
+  <div class="form-group">
+    <label class="float-left">Comments:</label>
+      <textarea class="form-control" type="text" [(ngModel)]="comments" name="comments" id="commentSection" disabled="true" required="" placeholder="Maximum of 500 letters"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <button class="btn btn-success btn-block" type="button" id="updateButton" disabled="true" (click)="updateSampleInformation()">Update Information</button>
+    <button class="btn btn-danger btn-block" type="button" id="clearButton" disabled="true" (click)="deleteSample()">Delete Sample</button>
+  </div>
+  <!-- DINAMIC MESSAGES -->
+  <div class="alert alert-success text-center" [style.display]='samplesWasUpdated' >Sample was updated!</div>
+  <div class="alert alert-danger text-center" [style.display]='sampleWasDeleted'>Sample was deleted.</div>
+  <div class="alert alert-danger text-center" [style.display]='samplesWasNotUpdated'>Missing one or more fields.</div>

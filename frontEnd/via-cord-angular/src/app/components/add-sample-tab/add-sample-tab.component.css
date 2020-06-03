@@ -1,0 +1,12 @@
+.dataStyle {
+    margin-top: 2%;
+    text-align: right;
+}
+
+.green {
+    border: solid 2px green;
+}
+
+.red {
+    border: solid 2px red;
+}

@@ -1,0 +1,5 @@
+"id";"sampleID";"isInitialWeightKnown";"initialWeight";"sampleDate";"comments";"bufferVolume"
+146;"2222-22222";"false";"0";"05-20-2020";"Second processed sample on the 20th of May";"27"
+147;"3333-33333";"false";"0";"05-20-2020";"My thrid sample";"27"
+148;"1111-11111";"true";"23";"05-20-2020";"First processed sample on the 20th of May.";"99"
+149;"4444-44444";"true";"45";"05-21-2020";"First sample of the day 21 of May";"99"
