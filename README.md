@@ -1,5 +1,4 @@
-# ViaCordBuffer
-The purpose of this application is to facilitate the work related to the management of the sample information in the current laboratory protocol for the ViaCord stem cell cryopreservation process.
+The purpose of this application is to facilitate the work related to the management of the sample information.
 
 # Initializing the webApp 
 1. You will need to install: Python3 and the needed packages by using the command in the main folder:
